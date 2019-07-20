@@ -7,7 +7,7 @@ const Lomake = (props) => (
   <div>
     <Header as="h1">Lomake</Header>
     <Button onClick={e => props.prevPage()}>Edellinen</Button>
-    <Button onClick={e => props.nextPage()}>Seuraava</Button>
+    <Button onClick={e => props.nextPage()} floated="right">Seuraava</Button>
   </div>
 );
 
