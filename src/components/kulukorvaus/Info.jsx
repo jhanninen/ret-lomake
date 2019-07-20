@@ -1,6 +1,4 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Button } from "semantic-ui-react";
+import React from "react";
 
 const Info = (props) => (
   <div>
@@ -17,12 +15,7 @@ const Info = (props) => (
     <p>
       Jos lomakkeen täyttämisessä tulee ongelmia tai ilmenee muuta kysyttävää, ole yhteydessä taloudenhoitajaan (Juhoon) em. sähköpostilla tai puhelimella 0404191804.
     </p>
-    <Button onClick={e => props.nextPage()}>Seuraava</Button>
   </div>
 );
-
-Info.propTypes = {
-  nextPage: PropTypes.func.isRequired,
-};
 
 export default Info;

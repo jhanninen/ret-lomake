@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Info from "./kulukorvaus/Info";
 import Lomake from "./kulukorvaus/Lomake";
 import Esikatselu from "./kulukorvaus/Esikatselu";
-import { Header } from "semantic-ui-react";
+import { Button, Header } from "semantic-ui-react";
 
 class Kulukorvaus extends Component {
   constructor(props) {
@@ -29,9 +29,13 @@ class Kulukorvaus extends Component {
     return (
       <div>
         <Header as="h1">Kulukorvauslomake</Header>
-        {this.state.page == 1 && <Info nextPage={() => this.nextPage()}/>}
-        {this.state.page == 2 && <Lomake prevPage={() => this.prevPage()} nextPage={() => this.nextPage()}/>}
-        {this.state.page == 3 && <Esikatselu prevPage={() => this.prevPage()} />}
+        {this.state.page == 1 && <Info />}
+        {this.state.page == 2 && <Lomake />}
+        {this.state.page == 3 && <Esikatselu />}
+        <Button.Group>
+          <Button labelPosition='left' icon='left chevron' onClick={e => this.prevPage()} content='Edellinen' />
+          <Button labelPosition='right' icon='right chevron' onClick={e => this.nextPage()} content='Seuraava' />
+        </Button.Group>
       </div>
     );
   }

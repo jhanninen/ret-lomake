@@ -1,19 +1,11 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Button, Header } from "semantic-ui-react";
+import React from "react";
+import { Header } from "semantic-ui-react";
 
 
 const Lomake = (props) => (
   <div>
-    <Header as="h1">Lomake</Header>
-    <Button onClick={e => props.prevPage()}>Edellinen</Button>
-    <Button onClick={e => props.nextPage()} floated="right">Seuraava</Button>
+    <Header as="h2">Lomake</Header>
   </div>
 );
-
-Lomake.propTypes = {
-  prevPage: PropTypes.func.isRequired,
-  nextPage: PropTypes.func.isRequired,
-};
 
 export default Lomake;

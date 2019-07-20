@@ -1,17 +1,11 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Button, Header } from "semantic-ui-react";
+import React from "react";
+import { Header } from "semantic-ui-react";
 
 
 const Esikatselu = (props) => (
   <div>
-    <Header as="h1">Esikatselu</Header>
-    <Button onClick={e => props.prevPage()}>Edellinen</Button>
+    <Header as="h2">Esikatselu</Header>
   </div>
 );
-
-Esikatselu.propTypes = {
-  prevPage: PropTypes.func.isRequired,
-};
 
 export default Esikatselu;
