@@ -64,7 +64,7 @@ class Kulukorvaus extends Component {
                       content={item.name}
                       active={this.state.page === i}
                       disabled={this.state.page < i}
-                      onClick={e => this.setState({ page: i })}
+                      onClick={()=> this.setState({ page: i })}
                     />
                   ))}
                 </Step.Group>
@@ -74,12 +74,12 @@ class Kulukorvaus extends Component {
               <Grid.Row>
               <Button.Group size="tiny">
                 <Button labelPosition='left' icon='left chevron'
-                  onClick={e => this.prevPage()}
+                  onClick={() => this.prevPage()}
                   disabled={this.state.page === 0}
                   content='Edellinen'
                 />
                 <Button labelPosition='right' icon='right chevron'
-                  onClick={e => this.nextPage()}
+                  onClick={() => this.nextPage()}
                   disabled={this.state.page === this.pages.length - 1}
                   content='Seuraava'
                 />

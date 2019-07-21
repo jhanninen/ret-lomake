@@ -7,7 +7,7 @@ import {
   SET_PURCHASE_DATE,
   SET_PURCHASE_DESCRIPTION,
   SET_PURCHASE_SUM,
-} from "../constants/action-types";
+} from "../constants/actionTypes";
 
 const purchaceTemplate = {
   place: "",
