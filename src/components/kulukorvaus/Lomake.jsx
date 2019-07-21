@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { Header, Form, Button } from "semantic-ui-react";
+import { Header, Form, Button, Grid, Divider } from "semantic-ui-react";
 
 import {
   setName,
@@ -12,6 +12,7 @@ import {
   setPurchaseDescription,
   setPurchaseSum,
   addPurchase,
+  removePurchase,
 } from "../../actions";
 import { validateIBAN } from "../../util/iban";
 
@@ -38,38 +39,63 @@ const Lomake = (props) => (
     <Header as="h3">Kuitit</Header>
     <Form>
       {props.purchases.map((purchase, i) => (
-        <Form.Group unstackable key={i}>
+        <Form.Group key={i} unstackable style={{ marginBottom: "5px" }}>
           <Form.Input
             width={3}
             label={i === 0 && "Paikka"}
-            placeholder="S-Market"
+            placeholder="esim. S-Market"
+            value={props.purchases[i].place}
             onChange={(e, {value}) => props.setPurchasePlace(i, value)}
           />
           <Form.Input
             width={3}
             label={i === 0 && "Aika"}
-            placeholder="20.11.2018"
+            placeholder="xx.xx.xxxx"
+            value={props.purchases[i].date}
             onChange={(e, {value}) => props.setPurchaseDate(i, value)}
           />
           <Form.Input
-            width={8}
+            width={7}
             label={i === 0 && "Selite"}
             placeholder="Arkartelutarvikkeita Kotka-lauman koloiltaan."
+            value={props.purchases[i].desciption}
             onChange={(e, {value}) => props.setPurchaseDescription(i, value)}
           />
           <Form.Input
             width={2}
             label={i === 0 && "Summa"}
-            placeholder="15,80"
+            placeholder="xx.xx"
+            value={props.purchases[i].sum}
             onChange={(e, {value}) => props.setPurchaseSum(i, value)}
+          />
+          <Form.Button
+            width={1}
+            style={i === 0 ? { marginTop: "23px"} : {}}
+            onClick={() => props.removePurchase(i)}
+            icon="minus"
           />
         </Form.Group>
       ))}
     </Form>
-    <Button
-      onClick={() => props.addPurchase()}
-      content="Lisää kuitti"
-    />
+    <Divider />
+    <Grid>
+      <Grid.Column width={4}>
+        <Button
+          onClick={() => props.addPurchase()}
+          content="Lisää kuitti"
+        />
+      </Grid.Column>
+      <Grid.Column width={7} />
+      <Grid.Column width={2} textAlign="right">
+        Yhteensä
+      </Grid.Column>
+      <Grid.Column width={2} textAlign="right">
+        {props.purchases.reduce((accumulator, currentValue) =>
+          accumulator + Number(currentValue.sum),
+          0).toFixed(2)}
+      </Grid.Column>
+    </Grid>
+
   </div>
 );
 
@@ -83,6 +109,7 @@ Lomake.propTypes = {
   setPurchaseDescription: PropTypes.func.isRequired,
   setPurchaseSum: PropTypes.func.isRequired,
   addPurchase: PropTypes.func.isRequired,
+  removePurchase: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -99,6 +126,7 @@ const mapDispatchToProps = {
   setPurchaseDescription: (id, desciption) => setPurchaseDescription(id, desciption),
   setPurchaseSum: (id, sum) => setPurchaseSum(id, sum),
   addPurchase: () => addPurchase(),
+  removePurchase: id => removePurchase(id),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Lomake);

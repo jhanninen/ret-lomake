@@ -13,7 +13,7 @@ const purchaceTemplate = {
   place: "",
   date: "",
   description: "",
-  sum: 0,
+  sum: "",
 }
 
 const initialState = {
@@ -55,6 +55,7 @@ function rootReducer(state = initialState, action) {
               place: action.place
             });
           }
+          return purchase;
         })
       });
 
@@ -66,6 +67,7 @@ function rootReducer(state = initialState, action) {
               date: action.date
             });
           }
+          return purchase;
         })
       });
 
@@ -77,6 +79,7 @@ function rootReducer(state = initialState, action) {
               description: action.description
             });
           }
+          return purchase;
         })
       });
 
@@ -88,6 +91,7 @@ function rootReducer(state = initialState, action) {
               sum: action.sum
             });
           }
+          return purchase;
         })
       });
 
