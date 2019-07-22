@@ -24,6 +24,7 @@ const Lomake = (props) => (
         <Form.Input
           label="Nimi"
           placeholder="Pirkko Partiolainen"
+          value={props.name}
           onChange={(e, {value}) => props.setName(value)}
         />
       </Form.Field>
@@ -31,6 +32,7 @@ const Lomake = (props) => (
         <Form.Input
           label="Pankkitili"
           placeholder="FIxx xxxx xxxx xxxx xx"
+          value={props.account}
           onChange={(e, {value}) => props.setAccount(value)}
           error={props.account !== "" && !validateIBAN(props.account)}
         />
@@ -100,6 +102,7 @@ const Lomake = (props) => (
 );
 
 Lomake.propTypes = {
+  name: PropTypes.string.isRequired,
   account: PropTypes.string.isRequired,
   purchases: PropTypes.array.isRequired,
   setName: PropTypes.func.isRequired,
