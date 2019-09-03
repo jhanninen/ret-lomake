@@ -22,13 +22,31 @@ export const isValidDate = (date) => {
       parts.length === 3 &&
       (parts[0] >= 1 && parts[0] <= 31) &&
       (parts[1] >= 1 && parts[1] <= 12) &&
-      ((parts[2] >= 1 && parts[2] <= 99) || (parts[2] >= 2000 && parts[2] <= 3000))
+      (parts[2] >= 2000 && parts[2] <= 3000)
   )
 
   if (!validParts) {
     return false
   }
 
-  const d = new Date(date)
+  const d = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`)
+
   return !isNaN(d)
+}
+
+export const sanitizeDate = (date) => {
+  if (!isValidDate(date)) {
+    return "VIRHEELLINEN PÄIVÄMÄÄRÄ";
+  }
+
+  const parts = date.split(".")
+
+  const d = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`)
+  return d.toLocaleDateString("fi-FI")
+}
+
+export const sanitizeSum = (sum) => {
+  const s = validateSum(sum)
+
+  return s.toFixed(2)
 }

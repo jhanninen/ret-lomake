@@ -4,7 +4,6 @@ import Info from "./kulukorvaus/Info";
 import Lomake from "./kulukorvaus/Lomake";
 import Esikatselu from "./kulukorvaus/Esikatselu";
 import { Button, Header, Grid, Step } from "semantic-ui-react";
-
 class Kulukorvaus extends Component {
   constructor(props) {
     super(props);

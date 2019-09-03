@@ -75,7 +75,7 @@ const Lomake = (props) => (
                   <Input
                     fluid
                     placeholder="Arkartelutarvikkeita Kotka-lauman koloiltaan."
-                    value={props.purchases[i].desciption}
+                    value={props.purchases[i].description}
                     onChange={(e, {value}) => props.setPurchaseDescription(i, value)}
                   />
                 </Grid.Column>
