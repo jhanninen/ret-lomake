@@ -16,7 +16,7 @@ export const validateSum = (sum) => {
 
 export const isValidDate = (date) => {
   // Date should be in xx.xx.xxxx -format
-  const parts = date.split(".")
+  const parts = date.split(".").map(x => parseInt(x))
 
   const validParts = (
       parts.length === 3 &&
@@ -29,8 +29,11 @@ export const isValidDate = (date) => {
     return false
   }
 
-  const d = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`)
-
+  const d = new Date()
+  d.setFullYear(parts[2])
+  d.setMonth(parts[1]-1)
+  d.setDate(parts[0])
+  
   return !isNaN(d)
 }
 
