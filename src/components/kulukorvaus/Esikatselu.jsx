@@ -7,7 +7,7 @@ import { sanitizeIBAN } from "../../util/iban";
 import { createPDF } from "../../util/pdfCreator";
 
 
-import { Header, Table, Tab, Button } from "semantic-ui-react";
+import { Header, Table, Button, List} from "semantic-ui-react";
 
 const Esikatselu = (props) => {
   const sum = props.purchases.reduce((accumulator, currentValue) =>
@@ -16,7 +16,7 @@ const Esikatselu = (props) => {
 
   return (
     <div>
-      <Header as="h2">Esikatselu</Header>
+      <Header as="h3">Esikatselu</Header>
       <Table collapsing basic="very">
         <Table.Body>
           <Table.Row>
@@ -74,8 +74,19 @@ const Esikatselu = (props) => {
       </Table>
       <Button
         onClick={() => createPDF(props.name, props.account, sum)}
-        content='Tulosta'
+        content='Luo lomake'
       />
+      <Header as='h4'>Ohjeet</Header>
+      <List ordered>
+        <List.Item><List.Header>Tallenna PDF-tiedosto laitteellesi painamalla yllä olevaa painiketta.</List.Header></List.Item>
+        <List.Item><List.Header>Kirjoita kuittien ylälaitaan sama järjestysnumero kuin lomakkeella.</List.Header></List.Item>
+        <List.Item><List.Header>Skannaa tai ota hyvälaatuiset valokuvat kuiteista.</List.Header>
+          <List.Description>Alkuperäisiä kuitteja ei tarvitse toimittaa, mutta säilytä ne itselläsi siltä varalta,
+            jos kuvien laatu ei ole riittävä kirjanpitoon.
+            </List.Description>
+        </List.Item>
+        <List.Item><List.Header>Lähetä lomake ja kuitit osoitteeseen <a href="mailto:ret.laskutus_atmerkki_gmail.com">ret.laskutus(at)gmail.com</a>.</List.Header></List.Item>
+      </List>
     </div>
   );
 }

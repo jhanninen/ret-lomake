@@ -7,8 +7,8 @@ export const createPDF = (name, account, sum) => {
   doc.setFontSize(12)
 
   const m1 = 15;
-  const m2 = 45;
-  const m3 = 145;
+  const m2 = 50;
+  const m3 = 150;
 
   doc.text("RUOKOLAHDEN ERÄTOVERIT RY", m1, 20)
   doc.text("Tilityslomake", m1, 30)
@@ -39,6 +39,6 @@ export const createPDF = (name, account, sum) => {
 
   doc.autoTable({html: '#kuittitaulukko', startY: 85, theme: 'plain'});
   //
-  doc.save("test.pdf")
+  doc.save("tilityslomake.pdf")
 }
 
