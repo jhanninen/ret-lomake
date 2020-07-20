@@ -1,11 +1,11 @@
 import React from "react";
 import { Container } from "semantic-ui-react";
 
-import Kulukorvaus from "./Kulukorvaus";
+import Welcome from "./Welcome";
 
 const App = () => (
   <Container>
-    <Kulukorvaus />
+    <Welcome />
   </Container>
 );
 
