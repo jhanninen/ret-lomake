@@ -55,7 +55,8 @@ module.exports = {
       template: "./src/index.html",
       filename: "./index.html"
     }),
-    new BundleAnalyzerPlugin()
+    // TODO: Enable on dev
+    // new BundleAnalyzerPlugin()
   ],
   devServer: {
     port: 3000
